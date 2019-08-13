@@ -1,6 +1,5 @@
-package collection;
+package com.kodilla.testing.collection;
 
-import com.kodilla.testing.collection.OddNumbersExterminator;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

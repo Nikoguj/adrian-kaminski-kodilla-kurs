@@ -25,7 +25,7 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(triangle);
         shapeCollector.removeFigure(triangle);
 
-        Assert.assertEquals(0, shapeCollector.showFigures());
+        Assert.assertEquals(0, shapeCollector.showFigures());//tutaj pozmieniać
     }
 
     @Test

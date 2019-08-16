@@ -23,6 +23,6 @@ public class ShapeCollector {
 
     public int showFigures()
     {
-        return shapes.size();
+        return shapes.size(); // String zwracający nazwe pole itp/
     }
 }

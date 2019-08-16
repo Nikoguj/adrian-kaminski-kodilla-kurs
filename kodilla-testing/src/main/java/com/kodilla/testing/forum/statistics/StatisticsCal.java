@@ -28,8 +28,14 @@ public class StatisticsCal {
 
     public void calculateAdvStatistics()
     {
-        averagePostUser = postCount/usersCount;
-        averageComUser = comCount/usersCount;
-        averageComPost = comCount/postCount;
+        if(usersCount != 0)
+        {
+            averagePostUser = postCount/usersCount;
+            averageComUser = comCount/usersCount;
+        }
+        if(postCount != 0) {
+            averageComPost = comCount/postCount;
+        }
+
     }
 }

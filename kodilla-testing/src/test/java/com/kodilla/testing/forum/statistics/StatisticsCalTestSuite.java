@@ -31,7 +31,7 @@ public class StatisticsCalTestSuite {
 
         statisticsCal.calculateAdvStatistics();
 
-        Assert.assertEquals(1, statisticsCal.getAveragePostUser(), 0.5);
+        Assert.assertEquals(0, statisticsCal.getAveragePostUser(), 0.5);
     }
 
     @Test
@@ -125,7 +125,7 @@ public class StatisticsCalTestSuite {
 
         statisticsCal.calculateAdvStatistics();
 
-        Assert.assertEquals(4, statisticsCal.getAveragePostUser(), 0.5);
+        Assert.assertEquals(0, statisticsCal.getAveragePostUser(), 0.5);
     }
 
     @Test

@@ -45,14 +45,6 @@ public class StreamMain {
         NumbersGenerator.generateEven(20);
 
         //Nie usuwam kodu powyżej jak było napisane w module
-        BookDirectory theBookDirectory = new BookDirectory();
-        String theResultStringOfBooks = theBookDirectory.getList().stream()
-                .filter(book -> book.getYearOfPublication() > 2005)
-                .map(Book::toString)
-                .collect(Collectors.joining(",\n","<<",">>"));
-
-        System.out.println(theResultStringOfBooks);
-
         Forum forum = new Forum();
         LocalDate totay = LocalDate.now();
         Map<Integer, ForumUser> theResultMapOfUsers = forum.getUserList().stream()

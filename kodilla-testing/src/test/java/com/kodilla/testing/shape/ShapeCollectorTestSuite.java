@@ -21,11 +21,13 @@ public class ShapeCollectorTestSuite {
     {
         ShapeCollector shapeCollector = new ShapeCollector();
         Triangle triangle = new Triangle();
+        Circle circle = new Circle();
 
         shapeCollector.addFigure(triangle);
+        shapeCollector.addFigure(circle);
         shapeCollector.removeFigure(triangle);
 
-        Assert.assertEquals(0, shapeCollector.showFigures());//tutaj pozmieniać
+        Assert.assertEquals("Circle 4\n", shapeCollector.showFigures());
     }
 
     @Test
@@ -44,11 +46,10 @@ public class ShapeCollectorTestSuite {
     public void testShowFigures()
     {
         ShapeCollector shapeCollector = new ShapeCollector();
-        Triangle triangle = new Triangle();
+        Square square = new Square();
 
-        shapeCollector.addFigure(triangle);
-        int result = shapeCollector.showFigures();
+        shapeCollector.addFigure(square);
 
-        Assert.assertEquals(1, result );
+        Assert.assertEquals("Square 4\n", shapeCollector.showFigures() );
     }
 }

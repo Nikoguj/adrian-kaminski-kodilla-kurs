@@ -3,6 +3,7 @@ package com.kodilla.testing.library;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -93,9 +94,8 @@ public class BookDirectoryTestSuite {
         LibraryUser libraryUser1 = new LibraryUser("Adam", "Kowalski", "94082414536");
         when(libraryDatabaseMock.listBooksInHandsOf(libraryUser1)).thenReturn(resultListOf0Books);
 
-        String listBooksInHandsOf0 = bookLibrary.listBooksInHandsOf(libraryUser1);
 
-        assertEquals("", listBooksInHandsOf0);
+        assertEquals(resultListOf0Books, bookLibrary.listBooksInHandsOf(libraryUser1));
 
     }
 
@@ -110,9 +110,7 @@ public class BookDirectoryTestSuite {
         LibraryUser libraryUser2 = new LibraryUser("Zuzanna", "Kapica", "64012352689");
         when(libraryDatabaseMock.listBooksInHandsOf(libraryUser2)).thenReturn(resultListOf1Books);
 
-        String listBooksInHandsOf1 = bookLibrary.listBooksInHandsOf(libraryUser2);
-
-        assertEquals("Secrets of Alamo John Smith 2008\n", listBooksInHandsOf1);
+        assertEquals(resultListOf1Books, bookLibrary.listBooksInHandsOf(libraryUser2));
 
     }
 
@@ -125,9 +123,8 @@ public class BookDirectoryTestSuite {
         LibraryUser libraryUser3 = new LibraryUser("Antek", "Kulczyk", "70091112836");
         when(libraryDatabaseMock.listBooksInHandsOf(libraryUser3)).thenReturn(resultListOf5Books);
 
-        String listBooksInHandsOf5 = bookLibrary.listBooksInHandsOf(libraryUser3);
 
-        assertEquals("Title1 Author1 1971\nTitle2 Author2 1972\nTitle3 Author3 1973\nTitle4 Author4 1974\nTitle5 Author5 1975\n", listBooksInHandsOf5);
+        assertEquals(resultListOf5Books, bookLibrary.listBooksInHandsOf(libraryUser3));
 
     }
 }

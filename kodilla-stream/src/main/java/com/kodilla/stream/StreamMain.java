@@ -10,6 +10,7 @@ import com.kodilla.stream.iterate.NumbersGenerator;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.person.People;
 import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.world.World;
 
 import java.time.LocalDate;
 import java.time.Month;

@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.lang.reflect.Array;
 
-public class ArrayOperationsTestSuite implements ArrayOperations{
+public class ArrayOperationsTestSuite{
     @Test
     public void testGetAverage()
     {

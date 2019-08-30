@@ -2,22 +2,62 @@ package com.kodilla.rps;
 
 public class Board {
     private int numberRoundToWin;
-    private Player player1;
-    private Player player2;
 
-    public Board(int numberRoundToWin, String player1Name) {
+    public Board(int numberRoundToWin) {
         this.numberRoundToWin = numberRoundToWin;
-        Player player1 = new Player(player1Name);
-        Player player2 = new Player("Computer");
     }
 
-    public void addPlayerPoint(Player player)
+    public void whoEntitledPoint(Player player1, Thrown thrown1, Player player2, Thrown thrown2)
     {
-        player.addPoint();
-    }
+        if(thrown1.getThrown() == 1)
+        {
+            if(thrown2.getThrown() == 1)
+            {
+                player1.addPoint();
+                player2.addPoint();
+            }
+            if(thrown2.getThrown() == 2)
+            {
+                player2.addPoint();
+            }
+            if(thrown2.getThrown() == 3)
+            {
+                player1.addPoint();
+            }
+        }
 
-    public int getPlayerPoint(Player player)
-    {
-        player.getPlayerPoints();
+        if(thrown1.getThrown() == 2)
+        {
+            if(thrown2.getThrown() == 1)
+            {
+                player1.addPoint();
+            }
+            if(thrown2.getThrown() == 2)
+            {
+                player1.addPoint();
+                player2.addPoint();
+            }
+            if(thrown2.getThrown() == 3)
+            {
+                player2.addPoint();
+            }
+        }
+
+        if(thrown1.getThrown() == 3)
+        {
+            if(thrown2.getThrown() == 1)
+            {
+                player2.addPoint();
+            }
+            if(thrown2.getThrown() == 2)
+            {
+                player1.addPoint();
+            }
+            if(thrown2.getThrown() == 3)
+            {
+                player1.addPoint();
+                player2.addPoint();
+            }
+        }
     }
 }

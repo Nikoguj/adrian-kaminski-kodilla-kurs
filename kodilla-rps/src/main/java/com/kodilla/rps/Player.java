@@ -12,12 +12,17 @@ public class Player {
         return name;
     }
 
+    public int getPlayerPoints() {
+        return playerPoints;
+    }
+
     public void addPoint()
     {
         playerPoints = playerPoints + 1;
     }
 
-    public int getPlayerPoints() {
-        return playerPoints;
+    public void restartPoints()
+    {
+        playerPoints = 0;
     }
 }

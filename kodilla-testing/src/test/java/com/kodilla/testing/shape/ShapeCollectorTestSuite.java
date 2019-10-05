@@ -5,8 +5,7 @@ import org.junit.Test;
 
 public class ShapeCollectorTestSuite {
     @Test
-    public void testAddFigure()
-    {
+    public void testAddFigure() {
         ShapeCollector shapeCollector = new ShapeCollector();
         Triangle triangle = new Triangle();
 
@@ -17,8 +16,7 @@ public class ShapeCollectorTestSuite {
     }
 
     @Test
-    public void testRemoveFigure()
-    {
+    public void testRemoveFigure() {
         ShapeCollector shapeCollector = new ShapeCollector();
         Triangle triangle = new Triangle();
         Circle circle = new Circle();
@@ -31,25 +29,23 @@ public class ShapeCollectorTestSuite {
     }
 
     @Test
-    public void testGetFigure()
-    {
+    public void testGetFigure() {
         ShapeCollector shapeCollector = new ShapeCollector();
         Triangle triangle = new Triangle();
 
         shapeCollector.addFigure(triangle);
-        Triangle result = (Triangle)shapeCollector.getFigure(0);
+        Triangle result = (Triangle) shapeCollector.getFigure(0);
 
-        Assert.assertEquals(result, triangle );
+        Assert.assertEquals(result, triangle);
     }
 
     @Test
-    public void testShowFigures()
-    {
+    public void testShowFigures() {
         ShapeCollector shapeCollector = new ShapeCollector();
         Square square = new Square();
 
         shapeCollector.addFigure(square);
 
-        Assert.assertEquals("Square 4\n", shapeCollector.showFigures() );
+        Assert.assertEquals("Square 4\n", shapeCollector.showFigures());
     }
 }

@@ -16,17 +16,13 @@ public class FlightSearchLogic {
         airports.put("Międzynarodowy Port Lotniczy Hongkong", false);
         airports.put("Międzynarodowy Port Lotniczy Szanghaj-Pudong", false);
 
-        if(airports.get(flight.departureAirport) != null && airports.get(flight.arrivalAirport) != null)
-        {
-            if(airports.get(flight.arrivalAirport) == true)
-            {
+        if (airports.get(flight.departureAirport) != null && airports.get(flight.arrivalAirport) != null) {
+            if (airports.get(flight.arrivalAirport) == true) {
                 return true;
-            }else
-            {
+            } else {
                 return false;
             }
-        }else
-        {
+        } else {
             throw new RoleInfoNotFoundException();
         }
     }

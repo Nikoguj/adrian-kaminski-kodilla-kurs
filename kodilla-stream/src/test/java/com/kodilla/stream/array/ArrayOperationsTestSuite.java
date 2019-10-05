@@ -5,10 +5,9 @@ import org.junit.Test;
 
 import java.lang.reflect.Array;
 
-public class ArrayOperationsTestSuite{
+public class ArrayOperationsTestSuite {
     @Test
-    public void testGetAverage()
-    {
+    public void testGetAverage() {
         int[] array = {2, 5, 3, 7, 8, 13, 3, 33, 56, 16, 38, 112};
         Assert.assertEquals(24.6, ArrayOperations.getAverage(array), 0.1);
     }

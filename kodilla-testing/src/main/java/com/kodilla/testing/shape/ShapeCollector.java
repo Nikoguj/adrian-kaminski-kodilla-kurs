@@ -6,18 +6,15 @@ public class ShapeCollector {
 
     ArrayList<Shape> shapes = new ArrayList<Shape>();
 
-    public void addFigure(Shape shape)
-    {
+    public void addFigure(Shape shape) {
         shapes.add(shape);
     }
 
-    public void removeFigure(Shape shape)
-    {
+    public void removeFigure(Shape shape) {
         shapes.remove(shape);
     }
 
-    public Shape getFigure(int n)
-    {
+    public Shape getFigure(int n) {
         return shapes.get(n);
     }
 
@@ -26,11 +23,9 @@ public class ShapeCollector {
         return shapes.size(); // String zwracający nazwe pole itp/
     }*/
 
-    public String showFigures()
-    {
+    public String showFigures() {
         String result = "";
-        for(Shape shape: shapes)
-        {
+        for (Shape shape : shapes) {
             result = result + shape.getShapeName() + " " + shape.getField() + "\n";
         }
         return result;

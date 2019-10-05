@@ -8,8 +8,7 @@ import java.util.List;
 public final class Forum {
     private final List<ForumUser> list = new ArrayList<>();
 
-    public Forum()
-    {
+    public Forum() {
         list.add(new ForumUser(001, "Alesiety", 'M', LocalDate.of(2000, Month.JANUARY, 4), 543));
         list.add(new ForumUser(002, "Roctorts", 'M', LocalDate.of(1997, Month.MARCH, 21), 123));
         list.add(new ForumUser(003, "Talklofter", 'F', LocalDate.of(1967, Month.OCTOBER, 16), 251));
@@ -19,8 +18,7 @@ public final class Forum {
         list.add(new ForumUser(007, "RawFun", 'M', LocalDate.of(1970, Month.JUNE, 25), 0));
     }
 
-    public List<ForumUser> getUserList()
-    {
+    public List<ForumUser> getUserList() {
         return list;
     }
 

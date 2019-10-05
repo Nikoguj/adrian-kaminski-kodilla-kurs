@@ -14,10 +14,8 @@ public class ComputerMove {
         this.rand = random.nextInt(5) + 1;
     }
 
-    public Move ComMove(ArrayList<Move> listMove)
-    {
-        switch (rand)
-        {
+    public Move ComMove(ArrayList<Move> listMove) {
+        switch (rand) {
             case 1:
                 return listMove.get(0);
             case 2:

@@ -12,9 +12,8 @@ public final class Continent {
 
     ArrayList<Country> countryList = new ArrayList<>();
 
-    public Continent(final String continent)
-    {
-        if(continent == "europe") {
+    public Continent(final String continent) {
+        if (continent == "europe") {
             Country spain = new Country();
             Country france = new Country();
             Country unitedKingdom = new Country();
@@ -38,7 +37,7 @@ public final class Continent {
             countryList.add(serbia);
             countryList.add(greece);
             countryList.add(romania);
-        }else if(continent == "asia") {
+        } else if (continent == "asia") {
             Country russia = new Country();
             Country mongolia = new Country();
             Country pakistan = new Country();
@@ -60,7 +59,7 @@ public final class Continent {
             countryList.add(indonesia);
             countryList.add(philippines);
             countryList.add(vietnam);
-        }else if(continent == "africa") {
+        } else if (continent == "africa") {
             Country algeria = new Country();
             Country niger = new Country();
             Country chad = new Country();
@@ -82,7 +81,7 @@ public final class Continent {
             countryList.add(angola);
             countryList.add(namibia);
             countryList.add(mozambique);
-        }else if(continent == "northAmerica") {
+        } else if (continent == "northAmerica") {
             Country USA = new Country();
             Country canada = new Country();
             Country mexico = new Country();
@@ -98,7 +97,7 @@ public final class Continent {
             countryList.add(cuba);
             countryList.add(bahamas);
             countryList.add(guatemala);
-        }else if(continent == "southAmerica") {
+        } else if (continent == "southAmerica") {
             Country venezuela = new Country();
             Country peru = new Country();
             Country brazil = new Country();

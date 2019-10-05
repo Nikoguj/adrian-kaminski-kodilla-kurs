@@ -26,15 +26,13 @@ public class StatisticsCal {
         this.comCount = statistics.commentsCount();
     }
 
-    public void calculateAdvStatistics()
-    {
-        if(usersCount != 0)
-        {
-            averagePostUser = postCount/usersCount;
-            averageComUser = comCount/usersCount;
+    public void calculateAdvStatistics() {
+        if (usersCount != 0) {
+            averagePostUser = postCount / usersCount;
+            averageComUser = comCount / usersCount;
         }
-        if(postCount != 0) {
-            averageComPost = comCount/postCount;
+        if (postCount != 0) {
+            averageComPost = comCount / postCount;
         }
 
     }

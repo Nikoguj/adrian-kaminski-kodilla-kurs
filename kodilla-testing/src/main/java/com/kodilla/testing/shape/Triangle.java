@@ -1,15 +1,13 @@
 package com.kodilla.testing.shape;
 
-public class Triangle implements Shape{
+public class Triangle implements Shape {
     @Override
-    public String getShapeName()
-    {
+    public String getShapeName() {
         return "Triangle";
     }
 
     @Override
-    public int getField()
-    {
+    public int getField() {
         return 4;
     }
 }

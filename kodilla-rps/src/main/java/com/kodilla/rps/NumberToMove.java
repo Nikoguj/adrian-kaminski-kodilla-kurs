@@ -4,10 +4,8 @@ import java.util.ArrayList;
 
 public class NumberToMove {
 
-    public Move convert(int number, ArrayList<Move> listMove)
-    {
-        switch (number)
-        {
+    public Move convert(int number, ArrayList<Move> listMove) {
+        switch (number) {
             case 1:
                 return listMove.get(0);
             case 2:

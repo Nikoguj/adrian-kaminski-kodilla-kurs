@@ -16,13 +16,11 @@ public class Player {
         return playerPoints;
     }
 
-    public void addPoint()
-    {
+    public void addPoint() {
         playerPoints = playerPoints + 1;
     }
 
-    public void restartPoints()
-    {
+    public void restartPoints() {
         playerPoints = 0;
     }
 }

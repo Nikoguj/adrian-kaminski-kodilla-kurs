@@ -7,29 +7,27 @@ import sun.java2d.pipe.SpanShapeRenderer;
 
 public class ForumTestSuite {
     @Before
-    public void before()
-    {
+    public void before() {
         System.out.println("Test Case: begin");
     }
+
     @After
-    public void after()
-    {
+    public void after() {
         System.out.println("Test Case: end");
     }
+
     @BeforeClass
-    public static void beforeClass()
-    {
+    public static void beforeClass() {
         System.out.println("Test Suite: begin");
     }
+
     @AfterClass
-    public static void afterClass()
-    {
+    public static void afterClass() {
         System.out.println("Test Suite: end");
     }
 
     @Test
-    public void testCaseUsername()
-    {
+    public void testCaseUsername() {
         SimpleUser simpleUser = new SimpleUser("theForumUser", "John Smith");
         String result = simpleUser.getUsername();
         System.out.println("Testing " + result);
@@ -37,8 +35,7 @@ public class ForumTestSuite {
     }
 
     @Test
-    public void testCaseRealName()
-    {
+    public void testCaseRealName() {
         SimpleUser simpleUser = new SimpleUser("theForumUser", "John Smith");
         String result = simpleUser.getRealName();
         System.out.println("Testing" + result);

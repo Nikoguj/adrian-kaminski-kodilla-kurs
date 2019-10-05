@@ -9,19 +9,17 @@ import java.util.ArrayList;
 
 public class CollectionTestSuite {
     @Before
-    public void before()
-    {
+    public void before() {
         System.out.println("Test Case: begin");
     }
+
     @After
-    public void after()
-    {
+    public void after() {
         System.out.println("Test Case: end");
     }
 
     @Test
-    public void testOddNumbersExterminatorEmptyList()
-    {
+    public void testOddNumbersExterminatorEmptyList() {
         OddNumbersExterminator number = new OddNumbersExterminator();
         ArrayList<Integer> num = new ArrayList<Integer>();
         ArrayList<Integer> result = number.exterminate(num);
@@ -30,8 +28,7 @@ public class CollectionTestSuite {
     }
 
     @Test
-    public void testOddNumbersExterminatorNormalList ()
-    {
+    public void testOddNumbersExterminatorNormalList() {
         OddNumbersExterminator number = new OddNumbersExterminator();
         ArrayList<Integer> num = new ArrayList<Integer>();
         num.add(2);

@@ -8,8 +8,7 @@ import java.util.ArrayList;
 public final class World {
     ArrayList<Continent> continentList = new ArrayList<>();
 
-    public World()
-    {
+    public World() {
         Continent europe = new Continent("europe");
         Continent asia = new Continent("asia");
         Continent africa = new Continent("africa");
@@ -23,13 +22,12 @@ public final class World {
         continentList.add(southAmerica);
     }
 
-    public BigDecimal getPeopleQuantity()
-    {
+    public BigDecimal getPeopleQuantity() {
         BigDecimal zero = BigDecimal.ZERO;
         return continentList.stream()
                 .flatMap(continent -> continent.GetCountryList().stream())
                 .map(country -> country.getPeopleQuantity())
-                .reduce(zero, (a,b) -> a.add(b));
+                .reduce(zero, (a, b) -> a.add(b));
 
 
     }

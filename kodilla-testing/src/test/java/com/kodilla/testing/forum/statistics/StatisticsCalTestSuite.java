@@ -16,8 +16,7 @@ import static org.mockito.Mockito.when;
 
 public class StatisticsCalTestSuite {
     @Test
-    public void testStatisticsCal0Post()
-    {
+    public void testStatisticsCal0Post() {
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> usersNames = new ArrayList<String>();
         usersNames.add("User");
@@ -35,8 +34,7 @@ public class StatisticsCalTestSuite {
     }
 
     @Test
-    public void testStatisticsCal1000Post()
-    {
+    public void testStatisticsCal1000Post() {
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> usersNames = new ArrayList<String>();
         usersNames.add("User");
@@ -54,8 +52,7 @@ public class StatisticsCalTestSuite {
     }
 
     @Test
-    public void testStatisticsCal0Com()
-    {
+    public void testStatisticsCal0Com() {
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> usersNames = new ArrayList<String>();
         usersNames.add("User");
@@ -73,8 +70,7 @@ public class StatisticsCalTestSuite {
     }
 
     @Test
-    public void testStatisticsCalComLessPost()
-    {
+    public void testStatisticsCalComLessPost() {
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> usersNames = new ArrayList<String>();
         usersNames.add("User");
@@ -92,8 +88,7 @@ public class StatisticsCalTestSuite {
     }
 
     @Test
-    public void testStatisticsCalComMorePost()
-    {
+    public void testStatisticsCalComMorePost() {
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> usersNames = new ArrayList<String>();
         usersNames.add("User");
@@ -111,8 +106,7 @@ public class StatisticsCalTestSuite {
     }
 
     @Test
-    public void testStatisticsCal0Users()
-    {
+    public void testStatisticsCal0Users() {
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> usersNames = new ArrayList<String>();
         int post = 50;
@@ -129,11 +123,10 @@ public class StatisticsCalTestSuite {
     }
 
     @Test
-    public void testStatisticsCal100Users()
-    {
+    public void testStatisticsCal100Users() {
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> usersNames = new ArrayList<String>();
-        for(int i = 0; i < 999; i++) {
+        for (int i = 0; i < 999; i++) {
             usersNames.add("User");
         }
         int post = 5000;

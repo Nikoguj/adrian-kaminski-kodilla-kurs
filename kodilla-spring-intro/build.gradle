@@ -1,11 +1,9 @@
 plugins {
     id 'java'
-    id 'application'
 }
 
 group 'com.kodilla'
 version '0.0.1-SNAPSHOT'
-mainClassName = "com.kodilla.good.patterns.flights.Application"
 
 sourceCompatibility = 1.8
 

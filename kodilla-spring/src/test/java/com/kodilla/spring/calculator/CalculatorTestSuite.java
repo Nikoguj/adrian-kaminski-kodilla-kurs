@@ -67,4 +67,5 @@ public class CalculatorTestSuite {
         //Then
         Assert.assertEquals(3.0, divVal, 0.5);
     }
+
 }

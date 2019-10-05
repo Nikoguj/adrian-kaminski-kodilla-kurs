@@ -36,5 +36,4 @@ public class Calculator {
         display.displayValue(returnVal);
         return returnVal;
     }
-
 }

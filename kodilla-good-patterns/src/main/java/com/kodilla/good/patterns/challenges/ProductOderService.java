@@ -1,4 +1,4 @@
-package challenges;
+package com.kodilla.good.patterns.challenges;
 
 import java.util.Random;
 

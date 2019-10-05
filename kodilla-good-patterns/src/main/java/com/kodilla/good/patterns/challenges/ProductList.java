@@ -1,9 +1,7 @@
-package challenges;
+package com.kodilla.good.patterns.challenges;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ProductList {
     List<String> productList = new ArrayList<>();

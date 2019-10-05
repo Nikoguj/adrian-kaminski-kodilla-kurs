@@ -1,7 +1,4 @@
-package flights;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.kodilla.good.patterns.flights;
 
 public class FlightsFinder {
 

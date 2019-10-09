@@ -6,10 +6,8 @@ import java.util.List;
 public class ExecuteOrder {
     public List<ShopInterface> listShop = new ArrayList<>();
 
-    public ExecuteOrder() {
-        listShop.add(new ExtraFoodShop());
-        listShop.add(new HealthyShop());
-        listShop.add(new GlutenFreeShop());
+    public ExecuteOrder(List<ShopInterface> listShop) {
+        this.listShop = listShop;
     }
 
     public void Run(List<Order> orderList) {

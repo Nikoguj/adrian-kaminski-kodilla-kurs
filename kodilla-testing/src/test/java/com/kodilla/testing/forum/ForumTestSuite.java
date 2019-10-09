@@ -3,7 +3,6 @@ package com.kodilla.testing.forum;
 
 import com.kodilla.testing.SimpleUser;
 import org.junit.*;
-import sun.java2d.pipe.SpanShapeRenderer;
 
 public class ForumTestSuite {
     @Before

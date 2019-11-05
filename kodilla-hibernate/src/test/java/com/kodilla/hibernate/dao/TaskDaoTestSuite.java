@@ -1,6 +1,7 @@
 package com.kodilla.hibernate.dao;
 
 import com.kodilla.hibernate.task.Task;
+import com.kodilla.hibernate.task.TaskFinancialDetails;
 import com.kodilla.hibernate.task.dao.TaskDao;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -21,7 +22,6 @@ public class TaskDaoTestSuite {
     private TaskDao taskDao;
     private static final String DESCRIPTION = "Test: Learn Hibernate";
 
-    @Ignore
     @Test
     public void testTaskDaoSave() {
         //Given
@@ -39,7 +39,6 @@ public class TaskDaoTestSuite {
         taskDao.deleteById(id);
     }
 
-    @Ignore
     @Test
     public void testTaskDaoFindByDuration() {
         //Given
@@ -58,4 +57,20 @@ public class TaskDaoTestSuite {
         taskDao.deleteById(id);
     }
 
+    @Test
+    public void testTaskDaoSaveWithFinancialDetails() {
+        //Given
+        Task task = new Task(DESCRIPTION, 30);
+        task.setTaskFinancialDetails(new TaskFinancialDetails(new BigDecimal(120), false));
+
+        //When
+        taskDao.save(task);
+        int id = task.getId();
+
+        //Then
+        Assert.assertNotEquals(0, id);
+
+        //CleanUp
+        //taskDao.deleteById(id);
+    }
 }

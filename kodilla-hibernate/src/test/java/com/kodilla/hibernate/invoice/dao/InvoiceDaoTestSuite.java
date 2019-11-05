@@ -33,6 +33,6 @@ public class InvoiceDaoTestSuite {
         Invoice invoice = new Invoice("005/2019", itemList);
 
         //When
-        //invoiceDao.save(invoice);
+        invoiceDao.save(invoice);
     }
 }

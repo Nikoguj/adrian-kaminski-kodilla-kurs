@@ -41,7 +41,7 @@ public class Product {
         this.name = name;
     }
 
-    @ManyToMany(
+    @OneToMany(
             targetEntity = Item.class,
             mappedBy = "product",
             cascade = CascadeType.ALL,

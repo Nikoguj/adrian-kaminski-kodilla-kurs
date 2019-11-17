@@ -14,6 +14,7 @@ import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -56,9 +57,15 @@ public class InvoiceDaoTestSuite {
 
         invoiceDao.save(invoice);
 
-        List<Item> itemList1 = invoice.getItems();
-        List<Item> itemList2 = pro1.getItems();
-        List<Item> itemList3 = pro2.getItems();
+        //List<Item> itemList1 = invoice.getItems();
+        Optional<Invoice> invoiceOptional = invoiceDao.findById(invoice.getId());
+        List<Item> itemList1 = invoiceOptional.get().getItems();
+
+        Optional<Product> productOptional1 = productDao.findById(pro1.getId());
+        List<Item> itemList2 = productOptional1.get().getItems();
+
+        Optional<Product> productOptional2 = productDao.findById(pro2.getId());
+        List<Item> itemList3 = productOptional2.get().getItems();
 
         //Then
         Assert.assertEquals(3, itemList1.size());

@@ -1,6 +1,16 @@
 package com.kodilla.sudoku;
 
 public class VariableContainer {
-    public static int EMPTY = -1;
-    public static int SUDOKU_LENGTH = 9;
+    public static char[][] mainBoard = new char[10][10];
+    public static PossibleSudokuElement[][] hideBoard = new PossibleSudokuElement[10][10];
+
+    static void fillHideBoard() {
+        for (int i = 0; i < hideBoard.length; i++) {
+            for (int j = 0; j < hideBoard.length; j++) {
+                hideBoard[i][j] = new PossibleSudokuElement();
+            }
+        }
+    }
+
+
 }

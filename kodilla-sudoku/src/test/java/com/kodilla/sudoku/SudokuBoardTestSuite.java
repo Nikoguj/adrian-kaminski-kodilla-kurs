@@ -5,25 +5,26 @@ import org.junit.Test;
 
 public class SudokuBoardTestSuite {
     @Test
-    public void testToString() {
-        //Given
-        SudokuBoard sudokuBoard = new SudokuBoard();
+    public void testBoardShow() {
+        Board board = new Board();
 
-        String exceptedString = "------------------- \n" +
-                          "|-1-1-1|-1-1-1|-1-1-1|\n" +
-                          "|-1-1-1|-1-1-1|-1-1-1|\n" +
-                          "|-1-1-1|-1-1-1|-1-1-1|\n" +
-                          "-------------------\n" +
-                          "|-1-1-1|-1-1-1|-1-1-1|\n" +
-                          "|-1-1-1|-1-1-1|-1-1-1|\n" +
-                          "|-1-1-1|-1-1-1|-1-1-1|\n" +
-                          "-------------------\n" +
-                          "|-1-1-1|-1-1-1|-1-1-1|\n" +
-                          "|-1-1-1|-1-1-1|-1-1-1|\n" +
-                          "|-1-1-1|-1-1-1|-1-1-1|\n" +
-                          "-------------------";
-        String returnString = sudokuBoard.toString();
+        String exceptedBoardToString = "-------------\n" +
+                "|   |   |   |\n" +
+                "|   |   |   |\n" +
+                "|   |   |   |\n" +
+                "-------------\n" +
+                "|   |   |   |\n" +
+                "|   |   |   |\n" +
+                "|   |   |   |\n" +
+                "-------------\n" +
+                "|   |   |   |\n" +
+                "|   |   |   |\n" +
+                "|   |   |   |\n" +
+                "-------------\n";
 
-        //Assert.assertEquals(exceptedString, returnString);
+        String returnBoardToString = board.toString();
+
+        Assert.assertEquals(exceptedBoardToString, returnBoardToString);
+
     }
 }

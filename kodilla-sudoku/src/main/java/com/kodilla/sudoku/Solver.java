@@ -7,8 +7,17 @@ import java.util.Collections;
 public class Solver {
 
     public void solve(char[][] mainBoard, PossibleSudokuElement[][] hideBoard) {
-        //while (howManyPossibleElementInHideBoard(hideBoard) != 81){
-        for (int h = 0; h < 500; h++) {
+        Copyist copyist = new Copyist();
+
+        char[][] copyMainBoard = copyist.copyMainBoard(mainBoard);
+        copyMainBoard[0][0] = 0;
+        PossibleSudokuElement[][] copyHideBoard = copyist.copyHideBoard(hideBoard);
+        copyHideBoard[0][0].possibleElements.clear();
+
+        int count = 0;
+
+        while (copyist.isHideBoardChange(hideBoard, copyHideBoard)) {
+            copyHideBoard = copyist.copyHideBoard(hideBoard);
             for (int i = 0; i < mainBoard.length; i++) {
                 for (int j = 0; j < mainBoard.length; j++) {
                     if (mainBoard[i][j] == ' ') {
@@ -24,7 +33,12 @@ public class Solver {
                 }
             }
         }
+
+        System.out.println("loop = " + count);
+        count++;
+
     }
+
 
     private int howManyPossibleElementInHideBoard(PossibleSudokuElement[][] hideBoard) {
         int size = 0;
@@ -125,12 +139,12 @@ public class Solver {
             boolean present = false;
             //Row
             for (int i = 0; i < vector.x; i++) {
-                if (hideBoard[vector.y][i].possibleElements.contains((Object)possibleValue)) {
+                if (hideBoard[vector.y][i].possibleElements.contains((Object) possibleValue)) {
                     present = true;
                 }
             }
             for (int i = vector.x + 1; i < mainBoard.length; i++) {
-                if (hideBoard[vector.y][i].possibleElements.contains((Object)possibleValue)) {
+                if (hideBoard[vector.y][i].possibleElements.contains((Object) possibleValue)) {
                     present = true;
                 }
             }
@@ -165,7 +179,7 @@ public class Solver {
         clearPossibleSudokuElement.possibleElements.clear();
         for (int i = 0; i < mainBoard.length; i++) {
             for (int j = 0; j < mainBoard.length; j++) {
-                if(mainBoard[i][j] != ' '){
+                if (mainBoard[i][j] != ' ') {
                     hideBoard[i][j] = clearPossibleSudokuElement;
                 }
             }
@@ -191,33 +205,33 @@ public class Solver {
 
         for (Vector midWindow : midWindows) {
             ArrayList<Integer> listPresent = new ArrayList<>();
-            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y-1][midWindow.x-1]));
-            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y-1][midWindow.x]));
-            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y-1][midWindow.x+1]));
+            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y - 1][midWindow.x - 1]));
+            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y - 1][midWindow.x]));
+            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y - 1][midWindow.x + 1]));
 
-            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y][midWindow.x+1]));
+            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y][midWindow.x + 1]));
             listPresent.add(Character.getNumericValue(mainBoard[midWindow.y][midWindow.x]));
-            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y][midWindow.x-1]));
+            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y][midWindow.x - 1]));
 
-            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y+1][midWindow.x-1]));
-            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y+1][midWindow.x]));
-            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y+1][midWindow.x+1]));
+            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y + 1][midWindow.x - 1]));
+            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y + 1][midWindow.x]));
+            listPresent.add(Character.getNumericValue(mainBoard[midWindow.y + 1][midWindow.x + 1]));
 
 
             ArrayList<Integer> listHide = new ArrayList<>();
-            listHide.addAll(hideBoard[midWindow.y-1][midWindow.x-1].possibleElements);
-            listHide.addAll(hideBoard[midWindow.y-1][midWindow.x].possibleElements);
-            listHide.addAll(hideBoard[midWindow.y-1][midWindow.x+1].possibleElements);
+            listHide.addAll(hideBoard[midWindow.y - 1][midWindow.x - 1].possibleElements);
+            listHide.addAll(hideBoard[midWindow.y - 1][midWindow.x].possibleElements);
+            listHide.addAll(hideBoard[midWindow.y - 1][midWindow.x + 1].possibleElements);
 
 
-            listHide.addAll(hideBoard[midWindow.y][midWindow.x-1].possibleElements);
+            listHide.addAll(hideBoard[midWindow.y][midWindow.x - 1].possibleElements);
             listHide.addAll(hideBoard[midWindow.y][midWindow.x].possibleElements);
-            listHide.addAll(hideBoard[midWindow.y][midWindow.x+1].possibleElements);
+            listHide.addAll(hideBoard[midWindow.y][midWindow.x + 1].possibleElements);
 
 
-            listHide.addAll(hideBoard[midWindow.y+1][midWindow.x-1].possibleElements);
-            listHide.addAll(hideBoard[midWindow.y+1][midWindow.x].possibleElements);
-            listHide.addAll(hideBoard[midWindow.y+1][midWindow.x+1].possibleElements);
+            listHide.addAll(hideBoard[midWindow.y + 1][midWindow.x - 1].possibleElements);
+            listHide.addAll(hideBoard[midWindow.y + 1][midWindow.x].possibleElements);
+            listHide.addAll(hideBoard[midWindow.y + 1][midWindow.x + 1].possibleElements);
 
             ArrayList<Integer> allNumbers = new ArrayList<>();
             allNumbers.addAll(listPresent);
@@ -226,7 +240,7 @@ public class Solver {
 
             for (int i = 1; i < 10; i++) {
                 int count = Collections.frequency(allNumbers, i);
-                if(count == 1) {
+                if (count == 1) {
                     if (hideBoard[midWindow.y - 1][midWindow.x - 1].possibleElements.contains(i)) {
                         mainBoard[midWindow.y - 1][midWindow.x - 1] = (char) (i + '0');
                     }
@@ -260,10 +274,33 @@ public class Solver {
                     }
                 }
             }
-
-
         }
+    }
 
+    public Vector whereMaxNumberInHideBoard(PossibleSudokuElement[][] hideBoard) {
+        Vector vector = new Vector();
+        int count = 0;
+        for (int i = 0; i < hideBoard.length; i++) {
+            for (int j = 0; j < hideBoard.length; j++) {
+                if (hideBoard[i][j].possibleElements.size() >= count) {
+                    count = hideBoard[i][j].possibleElements.size();
+                    vector.x = j;
+                    vector.y = i;
+                }
+            }
+        }
+        return vector;
+    }
+
+    public boolean isEnd(char[][] mainBoard) {
+        for (int i = 0; i < mainBoard.length; i++) {
+            for (int j = 0; j < mainBoard.length; j++) {
+                if (mainBoard[i][j] == ' ') {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 

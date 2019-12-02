@@ -683,4 +683,26 @@ public class SolverTestSuite {
         showPossibleArray(hideBoard);
         showCharArray(mainBoard);
     }
+
+    @Test
+    public void testWhereLessNumberInHideBoard() {
+        Solver solver = new Solver();
+        char[][] mainBoard = new char[9][9];
+        PossibleSudokuElement[][] hideBoard = new PossibleSudokuElement[9][9];
+        for (int i = 0; i < hideBoard.length; i++) {
+            for (int j = 0; j < hideBoard.length; j++) {
+                hideBoard[i][j] = new PossibleSudokuElement();
+            }
+        }
+        hideBoard[2][4].possibleElements.clear();
+        hideBoard[2][4].possibleElements.add((Integer)5);
+        hideBoard[2][4].possibleElements.add((Integer)8);
+
+        hideBoard[7][4].possibleElements.clear();
+        hideBoard[7][4].possibleElements.add((Integer)5);
+
+        hideBoard[5][8].possibleElements.clear();
+
+        //System.out.println(solver.whereLessNumberInHideBoard(hideBoard));
+    }
 }

@@ -3,12 +3,23 @@ package com.kodilla.sudoku;
 public class Board {
 
     public Board() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        clean();
+    }
+
+    public void clean() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
                 VariableContainer.mainBoard[i][j] = 32;
             }
         }
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                VariableContainer.hideBoard[i][j] = new PossibleSudokuElement();
+            }
+        }
     }
+
 
 
     @Override

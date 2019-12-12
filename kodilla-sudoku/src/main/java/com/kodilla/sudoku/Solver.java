@@ -1,22 +1,48 @@
 package com.kodilla.sudoku;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+
+import java.util.*;
 
 public class Solver {
 
-    public void solve(char[][] mainBoard, PossibleSudokuElement[][] hideBoard) {
+    public char[][] solverWGuess(char[][] mainBoard, PossibleSudokuElement[][] hideBoard) {
         Copyist copyist = new Copyist();
 
-        char[][] copyMainBoard = copyist.copyMainBoard(mainBoard);
-        copyMainBoard[0][0] = 0;
+        solve(mainBoard, hideBoard, false);
+        List<Backtrack> backtrackList = new ArrayList<>();
+
+        if (!isEnd(mainBoard)) {
+            Vector vector = whereMaxNumberInHideBoard(hideBoard);
+            for (int i = 0; i < hideBoard[vector.y][vector.x].possibleElements.size(); i++) {
+                backtrackList.add(new Backtrack(copyist.copyMainBoard(mainBoard), copyist.copyHideBoard(hideBoard), vector, hideBoard[vector.y][vector.x].possibleElements.get(i)));
+            }
+            for (int i = 0; i < backtrackList.size(); i++) {
+                boolean inWhile = false;
+                char[][] copyMainBoard = copyist.copyMainBoard(mainBoard);
+                while (copyist.isMainBoardChange(mainBoard, copyMainBoard) || inWhile == false) {
+                    inWhile = true;
+                    copyMainBoard = copyist.copyMainBoard(mainBoard);
+                    hideBoard[vector.y][vector.x].possibleElements.clear();
+                    hideBoard[vector.y][vector.x].possibleElements.add(backtrackList.get(i).getShot());
+                    char[][] returnBoard = solverWGuess(mainBoard, hideBoard);
+                    if(isEnd(returnBoard)){
+                        return  returnBoard;
+                    }
+                }
+                mainBoard = backtrackList.get(i).getMainBoard();
+                hideBoard = backtrackList.get(i).getHideBoard();
+            }
+        }
+        return mainBoard;
+    }
+
+    public void solve(char[][] mainBoard, PossibleSudokuElement[][] hideBoard, boolean inWhile) {
+        Copyist copyist = new Copyist();
+
         PossibleSudokuElement[][] copyHideBoard = copyist.copyHideBoard(hideBoard);
-        copyHideBoard[0][0].possibleElements.clear();
 
-        int count = 0;
-
-        while (copyist.isHideBoardChange(hideBoard, copyHideBoard)) {
+        while (copyist.isHideBoardChange(hideBoard, copyHideBoard) || inWhile == false) {
             copyHideBoard = copyist.copyHideBoard(hideBoard);
             for (int i = 0; i < mainBoard.length; i++) {
                 for (int j = 0; j < mainBoard.length; j++) {
@@ -32,28 +58,93 @@ public class Solver {
                     }
                 }
             }
+            inWhile = true;
         }
-
-        System.out.println("loop = " + count);
-        count++;
-
     }
 
-
-    private int howManyPossibleElementInHideBoard(PossibleSudokuElement[][] hideBoard) {
-        int size = 0;
-        for (int i = 0; i < hideBoard.length; i++) {
-            for (int j = 0; j < hideBoard.length; j++) {
-                size = size + hideBoard[i][j].possibleElements.size();
-            }
-        }
-        return size;
-    }
 
     public void oneLeft(char[][] mainBoard, PossibleSudokuElement[][] hideBoard, int i, int j) {
         if (hideBoard[i][j].possibleElements.size() == 1) {
             mainBoard[i][j] = (char) (hideBoard[i][j].possibleElements.get(0) + '0');
         }
+    }
+
+    public boolean canSolve(char[][] mainBoard) {
+        for (int i = 0; i < mainBoard.length; i++) {
+            for (int j = 0; j < mainBoard.length; j++) {
+                if(mainBoard[i][j] != ' '){
+                    for (int k = 0; k < j; k++) {
+                        if (mainBoard[i][j] == mainBoard[i][k]) {
+                            return false;
+                        }
+                    }
+                    for (int k = j+1; k < mainBoard.length; k++) {
+                        if (mainBoard[i][j] == mainBoard[i][k]) {
+                            return false;
+                        }
+                    }
+
+                    for (int k = 0; k < i; k++) {
+                        if (mainBoard[i][j] == mainBoard[k][j]) {
+                            return false;
+                        }
+                    }
+                    for (int k = i + 1; k < mainBoard.length; k++) {
+                        if (mainBoard[i][j] == mainBoard[k][j]) {
+                            return false;
+                        }
+                    }
+
+                    Vector midWindow = midWindowWhereVector(new Vector(i, j));
+                    List<Character> inWindow = new ArrayList<>();
+
+                    if(mainBoard[midWindow.y+1][midWindow.x-1] != ' ')
+                    {
+                        inWindow.add(mainBoard[midWindow.y+1][midWindow.x-1]);
+                    }
+                    if(mainBoard[midWindow.y+1][midWindow.x] != ' ')
+                    {
+                        inWindow.add(mainBoard[midWindow.y+1][midWindow.x]);
+                    }
+                    if(mainBoard[midWindow.y+1][midWindow.x+1] != ' ')
+                    {
+                        inWindow.add(mainBoard[midWindow.y+1][midWindow.x+1]);
+                    }
+
+                    if(mainBoard[midWindow.y-1][midWindow.x+1] != ' ')
+                    {
+                        inWindow.add(mainBoard[midWindow.y-1][midWindow.x+1]);
+                    }
+                    if(mainBoard[midWindow.y-1][midWindow.x] != ' ')
+                    {
+                        inWindow.add(mainBoard[midWindow.y-1][midWindow.x]);
+                    }
+                    if(mainBoard[midWindow.y-1][midWindow.x-1] != ' ')
+                    {
+                        inWindow.add(mainBoard[midWindow.y-1][midWindow.x-1]);
+                    }
+
+                    if(mainBoard[midWindow.y][midWindow.x-1] != ' ')
+                    {
+                        inWindow.add(mainBoard[midWindow.y][midWindow.x-1]);
+                    }
+                    if(mainBoard[midWindow.y][midWindow.x+1] != ' ')
+                    {
+                        inWindow.add(mainBoard[midWindow.y][midWindow.x+1]);
+                    }
+                    if(mainBoard[midWindow.y][midWindow.x] != ' ')
+                    {
+                        inWindow.add(mainBoard[midWindow.y][midWindow.x]);
+                    }
+
+                    inWindow.remove((Object)mainBoard[i][j]);
+                    if(inWindow.contains(mainBoard[i][j])){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     public void deletePossibleElementFromRow(char[][] mainBoard, PossibleSudokuElement[][] hideBoard, Vector vector) {
@@ -282,7 +373,7 @@ public class Solver {
         int count = 0;
         for (int i = 0; i < hideBoard.length; i++) {
             for (int j = 0; j < hideBoard.length; j++) {
-                if (hideBoard[i][j].possibleElements.size() >= count) {
+                if (hideBoard[i][j].possibleElements.size() > count) {
                     count = hideBoard[i][j].possibleElements.size();
                     vector.x = j;
                     vector.y = i;

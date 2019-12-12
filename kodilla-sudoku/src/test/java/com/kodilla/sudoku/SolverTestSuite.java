@@ -52,7 +52,7 @@ public class SolverTestSuite {
             for (int j = 0; j < mainBoard.length; j++) {
                 mainBoard[i][j] = ' ';
             }
-        }
+    }
 
         mainBoard[0][0] = '5';
         mainBoard[0][1] = '3';
@@ -86,7 +86,7 @@ public class SolverTestSuite {
         mainBoard[8][8] = '9';
 
         //When
-        solver.solve(mainBoard, hideBoard);
+        solver.solverWGuess(mainBoard, hideBoard);
 
         showPossibleArray(hideBoard);
         showCharArray(mainBoard);
@@ -141,7 +141,7 @@ public class SolverTestSuite {
 
         showCharArray(mainBoard);
 
-        solver.solve(mainBoard, hideBoard);
+        solver.solverWGuess(mainBoard, hideBoard);
 
         showPossibleArray(hideBoard);
         showCharArray(mainBoard);
@@ -185,7 +185,7 @@ public class SolverTestSuite {
         mainBoard[8][4] = '1';
 
         //When
-        solver.solve(mainBoard, hideBoard);
+        solver.solverWGuess(mainBoard, hideBoard);
 
         showPossibleArray(hideBoard);
         showCharArray(mainBoard);
@@ -237,13 +237,254 @@ public class SolverTestSuite {
 
         showCharArray(mainBoard);
 
-        solver.solve(mainBoard, hideBoard);
+        char[][] returnBoard = solver.solverWGuess(mainBoard, hideBoard);
 
-        showPossibleArray(hideBoard);
-        showCharArray(mainBoard);
+        showCharArray(returnBoard);
 
     }
 
+    @Test
+    public void testSolve5() {
+        //Given
+        Solver solver = new Solver();
+        char[][] mainBoard = new char[9][9];
+        PossibleSudokuElement[][] hideBoard = new PossibleSudokuElement[9][9];
+        for (int i = 0; i < hideBoard.length; i++) {
+            for (int j = 0; j < hideBoard.length; j++) {
+                hideBoard[i][j] = new PossibleSudokuElement();
+            }
+        }
+
+        for (int i = 0; i < mainBoard.length; i++) {
+            for (int j = 0; j < mainBoard.length; j++) {
+                mainBoard[i][j] = ' ';
+            }
+        }
+
+        mainBoard[0][3] = '7';
+        mainBoard[0][4] = '6';
+        mainBoard[1][0] = '4';
+        mainBoard[1][6] = '5';
+        mainBoard[2][4] = '3';
+        mainBoard[2][5] = '2';
+        mainBoard[2][7] = '6';
+        mainBoard[2][8] = '7';
+        mainBoard[3][3] = '5';
+        mainBoard[3][6] = '1';
+        mainBoard[4][0] = '3';
+        mainBoard[4][4] = '2';
+        mainBoard[4][7] = '5';
+        mainBoard[5][1] = '4';
+        mainBoard[5][4] = '8';
+        mainBoard[5][8] = '6';
+        mainBoard[6][5] = '4';
+        mainBoard[7][5] = '8';
+        mainBoard[7][6] = '7';
+        mainBoard[7][7] = '3';
+        mainBoard[8][2] = '2';
+        mainBoard[8][4] = '5';
+        mainBoard[8][8] = '8';
+        //When
+
+        showCharArray(mainBoard);
+
+
+        char[][] returnBoard = solver.solverWGuess(mainBoard, hideBoard);
+
+        showCharArray(returnBoard);
+
+    }
+
+
+    @Test
+    public void testSolve6() {
+        //Given
+        Solver solver = new Solver();
+        char[][] mainBoard = new char[9][9];
+        PossibleSudokuElement[][] hideBoard = new PossibleSudokuElement[9][9];
+        for (int i = 0; i < hideBoard.length; i++) {
+            for (int j = 0; j < hideBoard.length; j++) {
+                hideBoard[i][j] = new PossibleSudokuElement();
+            }
+        }
+
+        for (int i = 0; i < mainBoard.length; i++) {
+            for (int j = 0; j < mainBoard.length; j++) {
+                mainBoard[i][j] = ' ';
+            }
+        }
+
+        mainBoard[0][2] = '5';
+        mainBoard[0][3] = '9';
+        mainBoard[0][5] = '3';
+        mainBoard[0][6] = '7';
+        mainBoard[1][5] = '7';
+        mainBoard[1][7] = '9';
+        mainBoard[1][8] = '8';
+        mainBoard[2][2] = '8';
+        mainBoard[2][5] = '4';
+        mainBoard[2][6] = '1';
+        mainBoard[2][8] = '5';
+        mainBoard[3][2] = '4';
+        mainBoard[3][3] = '8';
+        mainBoard[3][8] = '3';
+        mainBoard[4][0] = '8';
+        mainBoard[4][4] = '6';
+        mainBoard[5][1] = '7';
+        mainBoard[5][2] = '1';
+        mainBoard[6][0] = '4';
+        mainBoard[7][6] = '6';
+        mainBoard[7][7] = '5';
+        mainBoard[8][2] = '7';
+        mainBoard[8][3] = '5';
+        mainBoard[8][7] = '1';
+        mainBoard[8][8] = '4';
+        //When
+
+        showCharArray(mainBoard);
+
+
+        char[][] returnBoard = solver.solverWGuess(mainBoard, hideBoard);
+        showPossibleArray(hideBoard);
+        showCharArray(returnBoard);
+
+    }
+
+    @Test
+    public void testSolve7() {
+        //Given
+        Solver solver = new Solver();
+        char[][] mainBoard = new char[9][9];
+        PossibleSudokuElement[][] hideBoard = new PossibleSudokuElement[9][9];
+        for (int i = 0; i < hideBoard.length; i++) {
+            for (int j = 0; j < hideBoard.length; j++) {
+                hideBoard[i][j] = new PossibleSudokuElement();
+            }
+        }
+
+        for (int i = 0; i < mainBoard.length; i++) {
+            for (int j = 0; j < mainBoard.length; j++) {
+                mainBoard[i][j] = ' ';
+            }
+        }
+
+        //When
+
+        showCharArray(mainBoard);
+
+
+        char[][] returnBoard = solver.solverWGuess(mainBoard, hideBoard);
+        showPossibleArray(hideBoard);
+        showCharArray(returnBoard);
+
+    }
+
+    @Test
+    public void testSolve8() {
+        //Given
+        Solver solver = new Solver();
+        char[][] mainBoard = new char[9][9];
+        PossibleSudokuElement[][] hideBoard = new PossibleSudokuElement[9][9];
+        for (int i = 0; i < hideBoard.length; i++) {
+            for (int j = 0; j < hideBoard.length; j++) {
+                hideBoard[i][j] = new PossibleSudokuElement();
+            }
+        }
+
+        for (int i = 0; i < mainBoard.length; i++) {
+            for (int j = 0; j < mainBoard.length; j++) {
+                mainBoard[i][j] = ' ';
+            }
+        }
+
+        mainBoard[0][2] = '5';
+        mainBoard[0][3] = '5';
+        mainBoard[0][5] = '5';
+        mainBoard[0][6] = '5';
+        mainBoard[1][5] = '5';
+        mainBoard[1][7] = '5';
+        mainBoard[1][8] = '8';
+        mainBoard[2][2] = '8';
+        mainBoard[2][5] = '4';
+        mainBoard[2][6] = '1';
+        mainBoard[2][8] = '5';
+        mainBoard[3][2] = '4';
+        mainBoard[3][3] = '8';
+        mainBoard[3][8] = '3';
+        mainBoard[4][0] = '8';
+        mainBoard[4][4] = '6';
+        mainBoard[5][1] = '7';
+        mainBoard[5][2] = '1';
+        mainBoard[6][0] = '4';
+        mainBoard[7][6] = '6';
+        mainBoard[7][7] = '5';
+        mainBoard[8][2] = '7';
+        mainBoard[8][3] = '5';
+        mainBoard[8][7] = '1';
+        mainBoard[8][8] = '4';
+        //When
+        showCharArray(mainBoard);
+
+
+        char[][] returnBoard = solver.solverWGuess(mainBoard, hideBoard);
+        showPossibleArray(hideBoard);
+        showCharArray(returnBoard);
+
+    }
+
+    @Test
+    public void testSolve9() {
+        //Given
+        Solver solver = new Solver();
+        char[][] mainBoard = new char[9][9];
+        PossibleSudokuElement[][] hideBoard = new PossibleSudokuElement[9][9];
+        for (int i = 0; i < hideBoard.length; i++) {
+            for (int j = 0; j < hideBoard.length; j++) {
+                hideBoard[i][j] = new PossibleSudokuElement();
+            }
+        }
+
+        for (int i = 0; i < mainBoard.length; i++) {
+            for (int j = 0; j < mainBoard.length; j++) {
+                mainBoard[i][j] = ' ';
+            }
+        }
+
+        mainBoard[3][3] = '6';
+        mainBoard[3][4] = '7';
+        //When
+        showCharArray(mainBoard);
+
+
+        char[][] returnBoard = solver.solverWGuess(mainBoard, hideBoard);
+        showPossibleArray(hideBoard);
+        showCharArray(returnBoard);
+
+    }
+
+
+    @Test
+    public void testCanSolve() {
+        //Given
+        Solver solver = new Solver();
+        char[][] mainBoard = new char[9][9];
+
+        for (int i = 0; i < mainBoard.length; i++) {
+            for (int j = 0; j < mainBoard.length; j++) {
+                mainBoard[i][j] = ' ';
+            }
+        }
+
+        mainBoard[0][2] = '5';
+        mainBoard[0][3] = '2';
+        mainBoard[1][7] = '5';
+        mainBoard[4][4] = '5';
+        //When
+
+        showCharArray(mainBoard);
+
+        Assert.assertEquals(true, solver.canSolve(mainBoard));
+    }
 
     @Test
     public void testDeletePossibleElementFromRow1() {

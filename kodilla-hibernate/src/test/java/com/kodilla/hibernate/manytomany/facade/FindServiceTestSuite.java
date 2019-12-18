@@ -25,9 +25,8 @@ public class FindServiceTestSuite {
     @Autowired
     private EmployeeDao employeeDao;
 
-    @Transactional
     @Test
-    public void testFindByLetters() {
+    public void testFindCompanyByLetters() {
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -58,12 +57,54 @@ public class FindServiceTestSuite {
 
         //When
         List<Company> companyList = findFacade.findCompanyByLetters("Mach");
-        List<Employee> employeeList = findFacade.findEmployeeByLetters("pha");
 
         //Then
         Assert.assertEquals(1, companyList.size());
-        Assert.assertEquals(1, employeeList.size());
 
+        //CleanUp
+        try {
+            companyDao.deleteById(softwareMachineId);
+            companyDao.deleteById(dataMaestersId);
+            companyDao.deleteById(greyMatterId);
+        } catch (Exception e) {
+        }
+    }
+
+    @Test
+    public void testFindEmployeeByLetters() {
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company greyMatter = new Company("Grey Matter");
+
+        softwareMachine.getEmployees().add(johnSmith);
+        dataMaesters.getEmployees().add(stephanieClarckson);
+        dataMaesters.getEmployees().add(lindaKovalsky);
+        greyMatter.getEmployees().add(johnSmith);
+        greyMatter.getEmployees().add(lindaKovalsky);
+
+        johnSmith.getCompanies().add(softwareMachine);
+        johnSmith.getCompanies().add(greyMatter);
+        stephanieClarckson.getCompanies().add(dataMaesters);
+        lindaKovalsky.getCompanies().add(dataMaesters);
+        lindaKovalsky.getCompanies().add(greyMatter);
+
+        companyDao.save(softwareMachine);
+        int softwareMachineId = softwareMachine.getId();
+        companyDao.save(dataMaesters);
+        int dataMaestersId = dataMaesters.getId();
+        companyDao.save(greyMatter);
+        int greyMatterId = greyMatter.getId();
+
+        //When
+        List<Employee> employeeList = findFacade.findEmployeeByLetters("pha");
+
+        //Then
+        Assert.assertEquals(1, employeeList.size());
 
         //CleanUp
         try {
